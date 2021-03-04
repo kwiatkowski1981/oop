@@ -94,4 +94,9 @@ zenek.changeCitizenship('włoskie');
 const marysia = new Citizen('Francja', "niemieckie");
 console.log(marysia);
 
+// my own function dedelte (from array)
+const arr = [5, 6, 7, 8];
+Array.prototype.delete = function (index) {
+    return this.splice(index, 1);
+}
 
