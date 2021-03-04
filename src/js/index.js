@@ -93,7 +93,7 @@ console.log(zenek);
 zenek.changeCitizenship('włoskie');
 const marysia = new Citizen('Francja', "niemieckie");
 console.log(marysia);
-
+Citizen.prototype.age = 21;
 // my own function dedelte (from array)
 const arr = [5, 6, 7, 8];
 Array.prototype.delete = function (index) {
@@ -106,4 +106,19 @@ console.log(arr.__proto__);
 console.log(arr.__proto__.__proto__);  // object prototyp
 console.log(arr.__proto__.__proto__.__proto__);  // null
 console.log(arr instanceof Array); // arr jest instancja array
+console.log(arr instanceof Object); // arr jest instancja object
+console.log(Object.getPrototypeOf(arr));
+console.log(Object.getPrototypeOf(zenek));
+console.log(arr.__proto__.constructor);
+console.log(zenek.__proto__.constructor);
 
+// proto sluzy do dziedziczenia metod i innych w obiektach ponizszych.
+// najpierw szuka na samym dole, w instancji np "zenek' i ozniej co raz wyzej
+// a takich zagniezdzen obiektow moze byc sporo
+
+
+// ******************************************************************************************************************
+// ******************************************************************************************************************
+// ***************************************************    CLASSES   *************************************************
+// ******************************************************************************************************************
+// ******************************************************************************************************************
