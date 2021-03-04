@@ -100,3 +100,10 @@ Array.prototype.delete = function (index) {
     return this.splice(index, 1);
 }
 
+arr.__proto__ = undefined;  // constructor prototyp
+console.log(arr.__proto__);
+
+console.log(arr.__proto__.__proto__);  // object prototyp
+console.log(arr.__proto__.__proto__.__proto__);  // null
+console.log(arr instanceof Array); // arr jest instancja array
+
