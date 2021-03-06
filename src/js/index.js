@@ -9,7 +9,7 @@ import '../scss/main.scss';
 console.log('HELLO 🚀')
 
 // const Car = function () {};  // constructor
-function Car(name){     // druga forma zapisu constructor'a
+function Car(name) {     // druga forma zapisu constructor'a
     console.log(this);
     this.name = name;
 }
@@ -53,11 +53,12 @@ let childGender;
 
 console.log(` Pani ${agata.name} i jej synowie ${agata.children} i oczywiście jej men ${kuba.aka}`);
 
-function Player(){
+function Player() {
 
 }
+
 class User {
-    
+
 }
 
 Player.prototype.age = 25;
@@ -81,6 +82,7 @@ function Citizen(country, citizenship) {
     //     console.log(`Zmiania za pomocą metod w instancji na obywatelstwo ${this.citizenship}`);
     // }
 }
+
 Citizen.prototype.changeCitizenship = function (citizenship) {
     this.citizenship = citizenship;
     console.log(`Zmiania za pomocą metod w prototypie na obywatelstwo ${this.citizenship}`);
@@ -125,11 +127,23 @@ console.log(zenek.__proto__.constructor);
 
 
 class Family {
+    constructor(name) {
+        this.name = name;
+    }
+    addMember(){
 
+    }
 }
-const nowakowie = new Family;
+
+const nowakowie = new Family("Nowakowie");
 console.log(nowakowie);
 
-const Family2 = function (){}
-const kowalscy = new Family2();
+const Family2 = function (name) {
+    this.name = name;
+}
+Family2.prototype.addMember = function (){
+
+};
+const kowalscy = new Family2("Kowalscy");
 console.log(kowalscy);
+
