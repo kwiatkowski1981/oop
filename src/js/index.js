@@ -211,8 +211,20 @@ class Human extends Mammal {
         super(age, name, hairs);
         this.language = language;
     }
+    speak() {
+        console.log(`%c kurfaaaaaaaa, ruchaaaaaać`, "color: red");
+    }
 }
 
 const ludz = new Human(39, 'kuba', 'grodzowe', 'polski');
 console.log(ludz);
 ludz.drinkMilk();
+ludz.speak()
+
+class Human2 extends Mammal {
+
+}
+const ludz2 = new Human2(35, 'Agata', 'blont');
+console.log(ludz2);
+ludz2.breathe();
+ludz2.drinkMilk();
