@@ -130,7 +130,8 @@ class Family {
     constructor(name) {
         this.name = name;
     }
-    addMember(){
+
+    addMember() {
 
     }
 }
@@ -141,9 +142,40 @@ console.log(nowakowie);
 const Family2 = function (name) {
     this.name = name;
 }
-Family2.prototype.addMember = function (){
+Family2.prototype.addMember = function () {
 
 };
 const kowalscy = new Family2("Kowalscy");
 console.log(kowalscy);
 
+class Family3 {
+    constructor(members, ...names) {
+        this.members = members;
+        this.names = names;
+    }
+
+    addMember(newMeber) {
+        this.names.push(newMeber)
+        this.members++;
+        console.log(`został dodany nowy członek rodziny: welcome -> ${newMeber} <- Rodzina liczy teraz ${this.members} członkow.`)
+    }
+
+    static makeFamily(...members){
+        return members;
+    }
+}
+const kwiatkowscy = new Family3(3, "kuba", "kasia", "danusia");
+console.log(kwiatkowscy);
+kwiatkowscy.addMember("agata");
+console.log(kwiatkowscy);
+Family3.makeFamily("senior", "junior");
+console.log(Family3);
+
+class Animal {
+    constructor(age) {
+        this.age = age;
+    }
+    breathe(){
+        console.log("zwierze oddycha");
+    }
+}
