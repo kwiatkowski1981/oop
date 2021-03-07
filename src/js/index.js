@@ -160,10 +160,11 @@ class Family3 {
         console.log(`został dodany nowy członek rodziny: welcome -> ${newMeber} <- Rodzina liczy teraz ${this.members} członkow.`)
     }
 
-    static makeFamily(...members){
+    static makeFamily(...members) {
         return members;
     }
 }
+
 const kwiatkowscy = new Family3(3, "kuba", "kasia", "danusia");
 console.log(kwiatkowscy);
 kwiatkowscy.addMember("agata");
@@ -172,10 +173,46 @@ Family3.makeFamily("senior", "junior");
 console.log(Family3);
 
 class Animal {
-    constructor(age) {
+    constructor(age, name) {
         this.age = age;
+        this.name = name;
     }
-    breathe(){
+
+    breathe() {
         console.log("zwierze oddycha");
     }
 }
+
+const zwierze = new Animal(12, 'ziomek');
+console.log(`zmienna zwierzę zawiera referencję do obiektu: ${zwierze.age} i jest jego instancją`);
+console.log('zmienna zwierzę zawiera referencję do obiektu:' + zwierze + 'i jest jego instancją');
+console.log(zwierze);
+console.log(`${Animal}`);
+console.log("cos " + zwierze);
+
+class Mammal extends Animal {
+    constructor(age, name, hairs) {
+        super(age, name);
+        this.hairs = hairs;
+    }
+
+    drinkMilk() {
+        console.log('glup glup, aaaaaaaaaale gopre');
+    }
+}
+
+const ssak = new Mammal(3, 'ziomek2', 'blond');
+console.log(ssak);
+ssak.breathe();
+ssak.drinkMilk();
+
+class Human extends Mammal {
+    constructor(age, name, hairs, language) {
+        super(age, name, hairs);
+        this.language = language;
+    }
+}
+
+const ludz = new Human(39, 'kuba', 'grodzowe', 'polski');
+console.log(ludz);
+ludz.drinkMilk();
