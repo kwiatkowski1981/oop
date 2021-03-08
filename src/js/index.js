@@ -1,5 +1,6 @@
 import '../scss/main.scss';
 
+
 // uncomment the lines below to enable PWA
 // import {registerSW} from './pwa.js';
 // registerSW();
@@ -228,3 +229,22 @@ const ludz2 = new Human2(35, 'Agata', 'blont');
 console.log(ludz2);
 ludz2.breathe();
 ludz2.drinkMilk();
+
+// ******************************************************************************************************************
+// ******************************************************************************************************************
+// *************************************************** this   *******************************************************
+// ******************************************************************************************************************
+// ******************************************************************************************************************
+
+
+const szarik = {
+    children: ['fafiik', 'zaaba'],
+    showChildren2: function (){
+        const that = this; // przypisanie obiektu do this
+        this.children.forEach(function (child, index){
+            console.log(that.children[index]); // uzycie that powoduje podlozenie obiektu w tym wypadku szarik jako this
+        })
+    },
+}
+
+szarik.showChildren2();
