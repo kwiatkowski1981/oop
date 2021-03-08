@@ -212,6 +212,7 @@ class Human extends Mammal {
         super(age, name, hairs);
         this.language = language;
     }
+
     speak() {
         console.log(`%c kurfaaaaaaaa, ruchaaaaaać`, "color: red");
     }
@@ -225,6 +226,7 @@ ludz.speak()
 class Human2 extends Mammal {
 
 }
+
 const ludz2 = new Human2(35, 'Agata', 'blont');
 console.log(ludz2);
 ludz2.breathe();
@@ -236,15 +238,127 @@ ludz2.drinkMilk();
 // ******************************************************************************************************************
 // ******************************************************************************************************************
 
-
+// jawne przypisanie this
 const szarik = {
-    children: ['fafiik', 'zaaba'],
-    showChildren2: function (){
-        const that = this; // przypisanie obiektu do this
-        this.children.forEach(function (child, index){
+    children: ['fafik', 'zaba'],
+    showChildren2: function () {
+        const that = this; // przypisanie obiektu do this , czesto widac 'that' lub 'self'
+        this.children.forEach(function (child, index) {
             console.log(that.children[index]); // uzycie that powoduje podlozenie obiektu w tym wypadku szarik jako this
         })
     },
 }
 
 szarik.showChildren2();
+
+
+// for of
+const szarik2 = {
+    children: ['fafiik2', 'zaaba2'],
+    showChildren2: function () {
+        for (const child of this.children) {
+            console.log(child);
+        }
+    },
+}
+
+szarik2.showChildren2();
+
+
+//arrow function
+const szarik3 = {
+    children: ['fafiik3', 'zaaba3'],
+    showChildren2: function () {
+        this.children.forEach((child, index) => {
+            console.log(this.children[index]) //arrow function dziedziczy 'this' z zakresu wyzszego.(nie tworzy go sama)
+        })
+    },
+}
+
+szarik3.showChildren2();
+
+
+//bind
+const szarik4 = {
+    children: ['fafiik4', 'zaaba4'],
+    showChildren2: function () {
+        this.children.forEach(function (child, index) {
+            console.log(this.children[index])
+        }.bind(this))
+    },
+}
+
+szarik4.showChildren2();
+
+// ******************************************************************************************************************
+// ******************************************************************************************************************
+// ********************************************  Hiding data  *******************************************************
+// ******************************************************************************************************************
+// ******************************************************************************************************************
+
+class Cat {
+    constructor(color) {
+        this._color = color;
+    }
+
+    getColor() {
+        return this._color;
+    }
+
+    setColor(value) {
+        if (typeof value === 'string') {
+            this._color = value;
+        } else {
+            console.log('podales/as zly typ danych');
+        }
+    }
+}
+
+const kotek = new Cat('czarny')
+
+// *******************************************************************
+
+class Dog {
+    constructor(name, dogColor) {
+        this.name = name;
+        let color = dogColor;
+        this.getColor = () => color;
+        this.setColor = (value) => color = value;
+    }
+}
+
+const fafik = new Dog('fafik', "brazowy");
+
+console.log(kotek);
+console.log(fafik);
+
+class Carr {
+    constructor(name, counter = 100000, year = 2000) {
+        this.name = name;
+        let _counter = counter;
+        let _year = year;
+        let _changeNumber = 0;
+
+        this.getYear = () => _year;
+
+        this.getCounter = () => {
+            if (_changeNumber) alert(`uwazaj, licznik zmieniony ${_changeNumber}`)
+            return _counter
+        };
+        this.setCounter = value => {
+            _changeNumber++;
+          return  _counter = value;
+        }
+
+        this.getChangeNumber = () => _changeNumber;
+
+        this.showCarAge = (year) => year - _year;
+
+
+    }
+}
+const polonez2 = new Carr('polonez caro', 753814, 1615);
+console.log(polonez2);
+console.log(`${polonez2.name} ${polonez2.getCounter()} ${polonez2.getYear()}`)
+console.log(`wiek auta to ${polonez2.showCarAge(2020)}`);
+
